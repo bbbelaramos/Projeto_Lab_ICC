@@ -72,3 +72,23 @@ def calcular_correlacao(tabela):
     correlacao = tabela.corr()
     print
     return correlacao
+
+def identificar_outliers(tabela):
+
+    outliers = {}
+    for coluna in COLUNAS_DESEJADAS:
+        Q1 = tabela[coluna].quantile(0.25)
+        Q3 = tabela[coluna].quantile(0.75)
+        IQR = Q3 - Q1
+        limite_inferior = Q1 - 1.5 * IQR
+        limite_superior = Q3 + 1.5 * IQR
+        outliers[coluna] = tabela[(tabela[coluna] < limite_inferior) | (tabela[coluna] > limite_superior)]
+
+
+        if len(outliers[coluna]) > 0:
+            contagem = outliers[coluna]['diagnostico'].value_counts()
+            print(f'Outliers na coluna {coluna}:')
+            print(contagem)
+
+    return outliers
+
