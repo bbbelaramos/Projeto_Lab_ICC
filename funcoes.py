@@ -103,9 +103,16 @@ def plotar_boxplot(tabela,coluna):
     plt.title(f'Boxplot de {coluna}')
     plt.show()
 
+def plotar_dispersao(tabela, coluna_x, coluna_y):
+    grupo_maligno = tabela[tabela['diagnostico'] == 0]
+    grupo_benigno = tabela[tabela['diagnostico'] == 1]
 
+    plt.scatter(grupo_maligno[coluna_x], grupo_maligno[coluna_y], c='red', label='Maligno')
+    plt.scatter(grupo_benigno[coluna_x], grupo_benigno[coluna_y], c='green', label='Benigno')
+    plt.legend()
+    plt.title(f'Dispersão entre {coluna_x} e {coluna_y}')
+    plt.show()
 
+plotar_dispersao(carregar_dados(), 'mean radius', 'mean texture')       
 
-
-plotar_boxplot(carregar_dados(), 'mean radius')
 
