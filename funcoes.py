@@ -89,7 +89,7 @@ def identificar_outliers(tabela):
     return outliers
 
 
-
+#funcoes para plotar histogramas e boxplots
 def plotar_histograma(tabela,coluna):
     tabela[coluna].hist()
     plt.title(f'Histograma de {coluna}')
