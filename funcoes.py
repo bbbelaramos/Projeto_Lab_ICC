@@ -98,4 +98,17 @@ def plotar_todos_histogramas(tabela):
     for coluna in COLUNAS_DESEJADAS:
         plotar_histograma(tabela, coluna)
 
-plotar_todos_histogramas(carregar_dados())
+
+
+def plotar_boxplot(tabela,coluna):
+    tabela.boxplot(column = coluna, by='diagnostico')
+    plt.suptitle('')
+    plt.title(f'Boxplot de {coluna}')
+    plt.show()
+
+
+
+
+
+plotar_boxplot(carregar_dados(), 'mean radius')
+
