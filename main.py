@@ -1,10 +1,10 @@
 #importando as funcoes do arquivo funcoes.py
-from funcoes import carregar_dados, limpar_dados, analisar_descritiva_geral, analisar_descritiva_por_grupo, testar_diferenca_grupos, calcular_correlacao, identificar_outliers
+import funcoes as f
 
-dados = limpar_dados()
+dados = f.limpar_dados()
 
-print(analisar_descritiva_geral(dados))
-print(analisar_descritiva_por_grupo(dados))
-print(testar_diferenca_grupos(dados))
-print(calcular_correlacao(dados))
-print(identificar_outliers(dados))
+print(f.analisar_descritiva_geral(dados))
+print(f.analisar_descritiva_por_grupo(dados))
+print(f.testar_diferenca_grupos(dados))
+print(f.calcular_correlacao(dados))
+print(f.identificar_outliers(dados))

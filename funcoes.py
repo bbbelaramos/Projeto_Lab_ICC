@@ -1,6 +1,7 @@
-#importando pandas, scipy e o dataset de câncer de mama do sklearn
+#importando pandas, scipy, matplotlib e o dataset de câncer de mama do sklearn
 import pandas as pd
 from scipy import stats
+import matplotlib.pyplot as plt
 from sklearn.datasets import load_breast_cancer
 
 COLUNAS_DESEJADAS = ['mean radius', 'mean texture', 'mean perimeter', 'mean area', 'mean smoothness','mean compactness', 'mean concavity', 'mean concave points', 'mean symmetry', 'mean fractal dimension']
@@ -52,7 +53,7 @@ def analisar_descritiva_por_grupo(tabela):
     return tabela_benig_malig
 
 
-
+#funções para testar a diferença entre os grupos, calcular correlação e identificar outliers
 def testar_diferenca_grupos(tabela):
 
     grupo_maligno = tabela[tabela['diagnostico'] == 0]
@@ -92,3 +93,11 @@ def identificar_outliers(tabela):
 
     return outliers
 
+
+
+def plotar_histograma(tabela,coluna):
+    tabela[coluna].hist()
+    plt.title(f'Histograma de {coluna}')
+    plt.show()
+
+plotar_histograma(carregar_dados(),'mean radius')
