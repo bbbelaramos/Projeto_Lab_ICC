@@ -97,9 +97,6 @@ def plotar_histograma(tabela,coluna):
 def plotar_todos_histogramas(tabela):
     for coluna in COLUNAS_DESEJADAS:
         plotar_histograma(tabela, coluna)
-
-
-
 def plotar_boxplot(tabela,coluna):
     tabela.boxplot(column = coluna, by='diagnostico')
     plt.suptitle('')
