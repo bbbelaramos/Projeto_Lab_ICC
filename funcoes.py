@@ -18,7 +18,6 @@ def carregar_dados():
     tabela_nova['diagnostico'] = dados_brutos.target 
 
     return tabela_nova
-
 def limpar_dados():
     tabela = carregar_dados()
     
@@ -40,13 +39,11 @@ def limpar_dados():
     print(f'Valores duplicados: {tabela_duplicada}')
 
     return tabela
-
 def analisar_descritiva_geral(tabela):
 
     #cálculo de estatísticas descritivas para cada coluna da tabela
     tabela_descritiva = tabela.describe()
     return tabela_descritiva
-
 def analisar_descritiva_por_grupo(tabela):
 
     tabela_benig_malig = tabela.groupby('diagnostico').mean()
@@ -67,13 +64,11 @@ def testar_diferenca_grupos(tabela):
         print(p_valor)
 
     return resultados
-
 def calcular_correlacao(tabela):
 
     correlacao = tabela.corr()
     print
     return correlacao
-
 def identificar_outliers(tabela):
 
     outliers = {}
@@ -99,5 +94,8 @@ def plotar_histograma(tabela,coluna):
     tabela[coluna].hist()
     plt.title(f'Histograma de {coluna}')
     plt.show()
+def plotar_todos_histogramas(tabela):
+    for coluna in COLUNAS_DESEJADAS:
+        plotar_histograma(tabela, coluna)
 
-plotar_histograma(carregar_dados(),'mean radius')
+plotar_todos_histogramas(carregar_dados())
